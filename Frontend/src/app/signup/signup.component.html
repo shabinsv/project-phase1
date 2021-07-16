@@ -1,0 +1,10 @@
+<form (ngSubmit)="signupUser()">
+    <input type="text" name="username"  [(ngModel)]="user.username">
+    <br>
+    <input type="password" name="password" [(ngModel)]="user.password">
+    <br>
+    <input type="text" name="address"  [(ngModel)]="user.address">
+    <br>
+    <input type="text" name="phonenumber"  [(ngModel)]="user.phonenumber">
+    <button type="submit">signup</button>
+    </form>

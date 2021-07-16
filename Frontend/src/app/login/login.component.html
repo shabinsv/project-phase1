@@ -1,0 +1,10 @@
+<form (ngSubmit)="loginUser()">
+    <button (click)="insert()">insert</button>
+    <div *ngFor="let i of user.sub">
+<input type="text" name="username"  [(ngModel)]="user.username">
+<br>
+<input type="password" name="password" [(ngModel)]="user.password">
+</div>
+<button type="submit" >Login</button>
+</form>
+

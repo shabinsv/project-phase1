@@ -1,0 +1,101 @@
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+	<div class="row">
+        <form class="form-horizontal" (ngSubmit)="resumedata1()">	
+<fieldset>
+
+<!-- Form Name -->
+<legend>::: Personal Details></legend>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="full_name">Full Name</label>
+  <div class="controls">
+    <input id="full_name" name="full_name" placeholder="Enter your full name" class="input-xlarge" type="text" [(ngModel)]="http.Resumedata.name">
+    <p class="help-block">Error</p>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="email">Email</label>
+  <div class="controls">
+    <input id="email" name="email" placeholder="Enter Your Email." class="input-xlarge" type="text"  [(ngModel)]="http.Resumedata.email">
+    <p class="help-block">Error</p>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="mobile">Mobile No.</label>
+  <div class="controls">
+    <input id="mobile" name="mobile" placeholder="Enter Your Mobile Number" class="input-xlarge" type="number"  [(ngModel)]="http.Resumedata.phonenumber">
+    <p class="help-block">Error</p>
+  </div>
+</div>
+
+<!-- Appended Input-->
+<div class="control-group">
+  <label class="control-label" for="dob">Date of Birth</label>
+  <div class="controls">
+    <div class="input-append">
+      <input id="dob" name="dob" class="input-large" placeholder="YYYY-MM-DD" type="date"  [(ngModel)]="http.Resumedata.dob">
+      <span class="add-on">DOB</span>
+    </div>
+    <p class="help-block">Error</p>
+  </div>
+</div>
+
+<!-- Multiple Radios (inline) -->
+<div class="control-group">
+  <label class="control-label" for="gender">Gender</label>
+  <div class="controls">
+    <label class="radio inline" for="gender-0">
+      <input name="gender" id="gender-0" value="Male" checked="checked" type="radio">
+      Male
+    </label>
+    <label class="radio inline" for="gender-1">
+      <input name="gender" id="gender-1" value="Female" type="radio">
+      Female
+    </label>
+  </div>
+</div>
+
+
+<!-- Textarea -->
+<div class="control-group">
+  <label class="control-label" for="Address">Address</label>
+  <div class="controls"> 
+                     
+    <textarea id="Address" name="Address" placeholder="Address" [(ngModel)]="http.Resumedata.address">Address</textarea>
+    
+  </div>
+</div>
+
+<!-- File Button --> 
+<div class="control-group">
+  <label class="control-label" for="photo">Photo</label>
+  <div class="controls">
+    <input id="photo" name="photo" class="input-file" type="file"  [(ngModel)]="http.Resumedata.photo">
+  </div>
+</div>
+
+<!-- Button -->
+<div class="control-group">
+  <label class="control-label" for="submit"></label>
+  <div class="controls">
+    <button id="submit" name="submit" type="submit" class="btn btn-primary">Save & Continue</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+<a routerLink="/Skills">
+  Next Page
+ </a>
+	</div>
+</div>
