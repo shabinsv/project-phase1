@@ -8,15 +8,13 @@ import { FormService } from '../form.service';
   styleUrls: ['./form1.component.css']
 })
 export class Form1Component implements OnInit {
- 
- 
+  
   constructor(public http:FormService,private router:Router) { }
 
   ngOnInit(): void {
   }
-
-  resumedata1(){
-    
+ 
+ resumedata1(){
     console.log("called");
     alert("sucess");
      this.router.navigate(["form2"]);

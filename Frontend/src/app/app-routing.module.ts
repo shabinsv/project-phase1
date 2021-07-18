@@ -7,6 +7,7 @@ import { Form4Component } from './form4/form4.component';
 import { Form5Component } from './form5/form5.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { Template1Component } from './template1/template1.component';
 import { UserComponent } from './user/user.component';
 
 const routes: Routes = [{path:'login',component:LoginComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [{path:'login',component:LoginComponent},
 {path:'form2',component:Form2Component},
 {path:'form3',component:Form3Component},
 {path:'form4',component:Form4Component},
-{path:'form5',component:Form5Component}];
+{path:'form5',component:Form5Component},
+{path:'template1',component:Template1Component}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

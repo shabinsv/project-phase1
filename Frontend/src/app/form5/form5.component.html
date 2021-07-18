@@ -9,38 +9,14 @@
 	<form class="form-horizontal" (ngSubmit)="resumedata5()">
 <fieldset>
 
-<!-- Form Name -->
-<legend>Other Details</legend>
-
-<!-- Text input-->
+<!-- File Button --> 
 <div class="control-group">
-  <label class="control-label" for="full_name">Achievements</label>
+  <label class="control-label" for="photo">Photo</label>
   <div class="controls">
-    <input id="full_name" name="full_name" placeholder="Enter your Achievements" class="input-xlarge" type="text" [(ngModel)]="http.Resumedata.achievements">
-      </div>
-</div>
-
-
-<!-- Text input-->
-<div *ngFor="let i of http.Resumedata.languages">
-<div class="control-group">
-  <label class="control-label" for="lang">Known Languages</label>
-  <div class="controls">                     
-    
-    <input type="text" id="lang" name="lang"placeholder="Enter your knwon languages" [(ngModel)]="i.language">
+    <input id="photo" name="image" class="input-file" type="file" multiple (change)="selectImage($event)">
+    <button id="submit" name="submit" type="button" class="btn btn-primary" (click)=upload()>upload image</button>
   </div>
 </div>
-</div>
-
-<div class="control-group">
-    <label class="control-label" for="submit"></label>
-    <div class="controls">
-      <button id="submit" name="submit" class="btn btn-primary" type="button" (click)="insert()">ADD</button>
-    </div>
-  </div>
-
-
-
 
 
 

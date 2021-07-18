@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class FormService {
+  ID2=localStorage.getItem("UserId");
   Resumedata={
     ID:localStorage.getItem("UserId"),
     name:"",
@@ -28,6 +29,10 @@ export class FormService {
 
   form1(form:any){
     return this.http.post("http://localhost:3000/form1",form)
+    .subscribe(data=>{console.log(data)})
+  }
+  image(image:any){
+    return this.http.post("http://localhost:3000/image/"+this.ID2,image)
     .subscribe(data=>{console.log(data)})
   }
 }

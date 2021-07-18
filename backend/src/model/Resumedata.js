@@ -17,7 +17,7 @@ const ResumeSchema=new Schema({
     jobyear:Number,
     jobdes:String,
     skills:Array,
-    achievement:String,
+    achievements:String,
     languages:Array
 })
 var Resumedata=mongoose.model("resumedata",ResumeSchema);

@@ -35,6 +35,40 @@
   </div>
 
 
+  <legend>Other Details</legend>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="full_name">Achievements</label>
+  <div class="controls">
+    <input id="full_name" name="full_name" placeholder="Enter your Achievements" class="input-xlarge" type="text" [(ngModel)]="http.Resumedata.achievements">
+      </div>
+</div>
+
+
+<!-- Text input-->
+<div *ngFor="let i of http.Resumedata.languages">
+<div class="control-group">
+  <label class="control-label" for="lang">Known Languages</label>
+  <div class="controls">                     
+    
+    <input type="text" id="lang" name="lang"placeholder="Enter your knwon languages" [(ngModel)]="i.language">
+  </div>
+</div>
+</div>
+
+<div class="control-group">
+    <label class="control-label" for="submit"></label>
+    <div class="controls">
+      <button id="submit" name="submit" class="btn btn-primary" type="button" (click)="insert2()">ADD</button>
+    </div>
+  </div>
+
+
+
+
+
+
 
 
 

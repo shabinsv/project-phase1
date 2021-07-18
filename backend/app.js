@@ -6,6 +6,18 @@ const cors=require('cors');
 var jwt = require('jsonwebtoken');
 var bodyparser=require('body-parser');
 const app= new express();
+var multer= require('multer');
+var xxa="";
+var storage = multer.diskStorage({
+      destination: function (req, file, cb) {
+        cb(null, './public/img')
+      },
+      filename: function (req, file, cb) {
+       xxa=file.originalname;
+        cb(null, file.originalname)
+      }
+  })
+  var upload = multer({ storage: storage })
 
 
 app.use(cors());
@@ -77,9 +89,19 @@ app.post("/login",function(req,res){
       //      res.status(200).send({token})
       //     }   
 })
-
+app.post("/image/:id",upload.single('image'),function(req,res){
+  id = req.params.id;
+  Resumedata.updateOne({"ID":id},
+  {$set:{"photo":xxa
+}}).then(function(){
+  console.log("ok");
+  res.send();
+});
+  
+  });
 app.post("/form1",function(req,res){
   console.log(req.body);
+
   var resume={
     ID:req.body.ID,
     name:req.body.name,
@@ -95,22 +117,22 @@ app.post("/form1",function(req,res){
     jobyear:req.body.jobyear,
     jobdes:req.body.jobdes,
     skills:req.body.skills,
-    achievement:req.body.achievement,
+    achievements:req.body.achievements,
     languages:req.body.languages
    } 
    var resume=new Resumedata(resume);
    resume.save();
-
-  
-  //   var data={
-//         email: userData.username,
-//         password:userData.password,
-//         address:userData.address,
-//         phonenumber:userData.phonenumber
-//   }
-// var data=Userdata(data);
-// data.save();
 });
+
+app.get("/usercvdata/:id",function(req,res){
+  const id = req.params.id; 
+ Resumedata.findOne({"ID":id})
+  .then((cvdata)=>{
+     res.send(cvdata);
+  })
+});
+
+
 
 
 

@@ -16,6 +16,7 @@ export class Form4Component implements OnInit {
   }
   
   resumedata4(){
+    this.http.form1(this.http.Resumedata);
     console.log("called");
     alert("sucess");
     this.router.navigate(['form5']);
@@ -24,6 +25,10 @@ export class Form4Component implements OnInit {
   }
   insert(){
     this.http.Resumedata.skills.push({skill:""});
+  }
+
+  insert2(){
+    this.http.Resumedata.languages.push({language:""});
   }
 
 

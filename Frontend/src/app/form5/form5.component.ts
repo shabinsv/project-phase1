@@ -8,22 +8,26 @@ import { FormService } from '../form.service';
   styleUrls: ['./form5.component.css']
 })
 export class Form5Component implements OnInit {
-   
   
-
+  selectedimage:any =null;
   constructor(public http:FormService,private router:Router) { }
 
   ngOnInit(): void {
   }
+  selectImage(event:any){
+    this.selectedimage =event.target.files[0];
+   }
+ upload(){
+   const fd= new FormData;
+   fd.append('image',this.selectedimage,this.selectedimage.name);
+   this.http.image(fd);
+   }
+
   resumedata5(){
-    this.http.form1(this.http.Resumedata);
-    console.log("called");
-    alert("sucess");
   
-   
+    console.log("photo added")
+    this.router.navigate(['user']);
   }
-  insert(){
-    this.http.Resumedata.languages.push({language:""});
-  }
+  
 
 }
