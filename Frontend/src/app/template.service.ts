@@ -5,6 +5,24 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TemplateService {
+  Resumedata={
+    ID:"",
+    name:"",
+    email:"",
+    phonenumber:"",
+    dob:"",
+    gender:"",
+    address:"",
+    photo:"",
+    education:[{degree:"",specialisation:"",year: "",name:""}],
+    job:"",
+    jobname:"",
+    jobyear:"",
+    jobdes:"",
+    skills:[{skill:""}],
+    achievements:"",
+    languages:[{language:""}]
+    }
 
   constructor(private http:HttpClient) { }
 

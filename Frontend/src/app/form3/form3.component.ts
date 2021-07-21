@@ -13,9 +13,7 @@ export class Form3Component implements OnInit {
   ngOnInit(): void {
   }
   resumedata3(){
-    console.log("called");
-    alert("sucess");
-    this.router.navigate(['form4']);
+    this.router.navigate(['user/form4']);
    
   }
 

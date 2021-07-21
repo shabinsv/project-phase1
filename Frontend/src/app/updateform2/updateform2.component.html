@@ -1,0 +1,69 @@
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+	<div class="row">
+	<form class="form-horizontal" (ngSubmit)="updatedata2()">
+
+
+<!-- Form Name -->
+<legend>Education Details</legend>
+<div *ngFor="let i of http.Updatedata.education">
+<div class="control-group">
+  <label class="control-label" for="choose">Choose A Degree</label>
+  <select class="control-label" placeholder="Degree" name="degree" [(ngModel)]="i.degree">
+    <option>Bachelor’s Degree</option>
+    <option>Master’s Degree</option>
+    <option>Doctoral Degree</option>
+  </select>
+    </div>
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="mobile">Specialisation</label>
+  <div class="controls">
+    <input id="mobile" name="mobile" placeholder="Enter Your Degree Name" class="input-xlarge" type="text" [(ngModel)]="i.specialisation">
+    
+  </div>
+</div>
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="mobile">Passout Year</label>
+  <div class="controls">
+    <input  type="number" name="year"placeholder="Enter Passout Year" class="input-xlarge" type="text" [(ngModel)]="i.year">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="mobile">Institution Name</label>
+  <div class="controls">
+    <input id="college"  placeholder="Enter College/University" class="input-xlarge" type="text" name="name" [(ngModel)]="i.name">
+    
+  </div>
+</div>
+</div>
+
+<!-- Button -->
+<div class="control-group">
+  <label class="control-label" for="submit"></label>
+  <div class="controls">
+    <button id="submit" name="submit" class="btn btn-primary" type="button" (click)="insert()">ADD More</button>
+  </div>
+</div>
+
+
+<!-- Button -->
+<div class="control-group">
+  <label class="control-label" for="submit"></label>
+  <div class="controls">
+    <button id="submit" name="submit" class="btn btn-primary">Next</button>
+  </div>
+</div>
+
+
+</form>
+	</div>
+</div>

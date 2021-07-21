@@ -18,8 +18,8 @@ export class Form4Component implements OnInit {
   resumedata4(){
     this.http.form1(this.http.Resumedata);
     console.log("called");
-    alert("sucess");
-    this.router.navigate(['form5']);
+    alert("Sucessfully Created");
+    this.router.navigate(['user/form5']);
   
    
   }

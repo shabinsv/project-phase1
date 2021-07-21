@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Template1Component } from '../template1/template1.component';
 import { UserService } from '../user.service';
 
 @Component({
@@ -13,5 +14,6 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     
   }
+  
 
 }

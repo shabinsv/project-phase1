@@ -10,9 +10,8 @@ import { UserService } from '../user.service';
 export class SignupComponent implements OnInit {
   user={
     username:"",
-    password:"",
-    address:"",
-    phonenumber:""
+    email:"",
+    password:""
   }
 
   constructor(private http:UserService,private router:Router) { }

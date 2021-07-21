@@ -13,9 +13,7 @@ constructor(public http:FormService,private router:Router) { }
   ngOnInit(): void {
   }
   resumedata2(){
-    console.log("called");
-    alert("sucess");
-    this.router.navigate(['form3']);
+    this.router.navigate(['user/form3']);
   }
   insert(){
     this.http.Resumedata.education.push({degree:"",specialisation:"",year: "",name:""});

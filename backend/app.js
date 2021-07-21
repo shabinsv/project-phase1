@@ -10,7 +10,7 @@ var multer= require('multer');
 var xxa="";
 var storage = multer.diskStorage({
       destination: function (req, file, cb) {
-        cb(null, './public/img')
+        cb(null, '../Frontend/src/assets')
       },
       filename: function (req, file, cb) {
        xxa=file.originalname;
@@ -22,8 +22,8 @@ var storage = multer.diskStorage({
 
 app.use(cors());
 app.use(bodyparser.json());
-var username= 'admin@gmail.com';
-const password="123456";
+const username= 'admin@gmail.com';
+const password='123456';
 
 function verifyToken(req, res, next) {
   if(!req.headers.authorization) {
@@ -45,10 +45,9 @@ app.post("/signup",function(req,res){
   console.log(req.body);
   var userData=req.body;
   var data={
-        email: userData.username,
-        password:userData.password,
-        address:userData.address,
-        phonenumber:userData.phonenumber
+        username: userData.username,
+        email: userData.email,
+        password:userData.password
   }
 var data=Userdata(data);
 data.save();
@@ -56,43 +55,41 @@ data.save();
 
 app.post("/login",function(req,res){
       console.log(req.body);
-      var x='';
       var userData=req.body;
-      Userdata.findOne({email:userData.username})
-      .then(function(data){
-        x=data.password;
-        if(x==userData.password){
-          var UserId=data._id;
-       console.log(data._id);
-       res.status(200).send({UserId})
-        }
-        else{
-                res.status(401).send('Invalid Password')
-            console.log("req.pass");
-        }
-      }).catch(function(){
-            res.status(401).send('Invalid Username')
-            console.log("req.user");
-      });
-
-      // if (username !==userData.username) {
-      //       res.status(401).send('Invalid Username')
-      //       console.log("req.user");
-      //     }
-      //  else if (password !==userData.password) {
-      //       res.status(401).send('Invalid Password')
-      //       console.log("req.pass");
-      //     }
-      //     else{
-      //      let payload={subject:username+password}
-      //      let token=jwt.sign(payload,'secretKey')
-      //      res.status(200).send({token})
-      //     }   
+      if (username ==userData.username && password ==userData.password) {
+            var navigation='admin';
+            let payload={subject:username+password}
+           let token=jwt.sign(payload,'secretKey')
+            res.send({ boolean: true, token, nav: navigation,ID:'Admin' })
+            console.log({ boolean: true, token, nav: navigation });
+          }
+          else{
+            Userdata.findOne({email:userData.username})
+            .then(function(data){
+             var x=data.password;
+              if(x==userData.password){
+                var UserId=data._id;
+                var navigation='user';
+                let payload={subject:username+password}
+               let token=jwt.sign(payload,'secretKey')
+                res.send({ boolean: true, token, nav: navigation,ID:UserId})
+                console.log({ boolean: true, token, nav: navigation,ID:UserId });
+              }
+              else{
+                      res.send({boolean: false, data: 'Password Wrong' })
+              }
+            }).catch(function(){
+          
+              res.send({boolean: false, data: 'Email Not Found' });
+              
+            });
+            
+          }   
 })
 app.post("/image/:id",upload.single('image'),function(req,res){
   id = req.params.id;
   Resumedata.updateOne({"ID":id},
-  {$set:{"photo":xxa
+  {$set:{"photo":"./assets/"+xxa
 }}).then(function(){
   console.log("ok");
   res.send();
@@ -110,6 +107,7 @@ app.post("/form1",function(req,res){
     dob:req.body.dob,
     gender:req.body.gender,
     address:req.body.address,
+    about:req.body.about,
     photo:req.body.photo,
     education:req.body.education,
     job:req.body.job,
@@ -130,6 +128,49 @@ app.get("/usercvdata/:id",function(req,res){
   .then((cvdata)=>{
      res.send(cvdata);
   })
+});
+
+app.put('/updateform',(req,res)=>{
+  console.log(req.body);
+  id=req.body._id,
+  ID=req.body.ID,
+    name1=req.body.name,
+    email=req.body.email,
+    phonenumber=req.body.phonenumber,
+    dob=req.body.dob,
+    gender=req.body.gender,
+    address=req.body.address,
+    about=req.body.about,
+    photo=req.body.photo,
+    education=req.body.education,
+    job=req.body.job,
+    jobname=req.body.jobname,
+    jobyear=req.body.jobyear,
+    jobdes=req.body.jobdes,
+    skills=req.body.skills,
+    achievements=req.body.achievements,
+    languages=req.body.languages
+ Resumedata.findOneAndUpdate({"ID":ID},
+                              {$set:{"name":name1,
+                                "email":email,
+                                "phonenumber":phonenumber,
+                                "dob":dob,
+                                "gender":gender,
+                                "address":address,
+                               "about":about,
+                                "photo":photo,
+                                "education":education,
+                                "job":job,
+                                "jobname":jobname,
+                                "jobyear":jobyear,
+                                "jobdes":jobdes,
+                                "skills":skills,
+                                "achievements":achievements,
+                                "languages":languages
+                          }})
+ .then(function(){
+     res.send();
+ });
 });
 
 

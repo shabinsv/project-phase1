@@ -14,14 +14,7 @@ export class LoginComponent implements OnInit {
   user={
     username:"",
     password:"",
-    sub:[{sub1:"",sub2:""}]
   }
-  myObjArray = [
-    {id: 1, name: "Hardik" },
-    {id: 2, name: "Vimal" },
-    {id: 3, name: "Paresh" }
-  ];
-
   constructor(private http:UserService,private router:Router) { }
 
   ngOnInit(): void {
@@ -29,14 +22,29 @@ export class LoginComponent implements OnInit {
   loginUser(){
     this.http.login(this.user)
     .subscribe(res=>{
-      localStorage.setItem('UserId',res.UserId)
-  })
+      if(res.boolean){
+      localStorage.setItem('UserId',res.ID);
+      localStorage.setItem('token', res.token);
+      this.router.navigate([`${res.nav}`]);
+    }
+    else{
+      alert(res.data);
+    }
+  });
+  // loginUser() {
+  //   this._auth.loginUser(this.loginForm.value).subscribe((response) => {
+  //     if (response.status) {
+  //       localStorage.setItem('token', response.token);
+  //       console.log(response.token);
+  //       localStorage.setItem('role', response.role);
+  //       this._router.navigate(['/']);
+  //     } else {
+  //       Swal.fire('Warning!!', 'User not found!', 'error').then((refresh) => {
+  //         window.location.reload();
+  //       });
+  //     }
+  //   });
+  // }  
+  
   }
-
-  insert(){
-    this.user.sub.push({sub1:"",sub2:""});
-  }
-
- 
-
 }

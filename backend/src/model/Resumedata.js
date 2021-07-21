@@ -10,6 +10,7 @@ const ResumeSchema=new Schema({
     dob:String,
     gender:String,
     address:String,
+    about:String,
     photo:String,
     education:Array,
     job:String,

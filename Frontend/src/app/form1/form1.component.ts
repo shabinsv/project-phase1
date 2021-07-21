@@ -15,9 +15,7 @@ export class Form1Component implements OnInit {
   }
  
  resumedata1(){
-    console.log("called");
-    alert("sucess");
-     this.router.navigate(["form2"]);
+     this.router.navigate(["user/form2"]);
   }
 
 }

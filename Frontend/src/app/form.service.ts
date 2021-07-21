@@ -14,6 +14,7 @@ export class FormService {
     dob:"",
     gender:"",
     address:"",
+    about:"",
     photo:"",
     education:[{degree:"",specialisation:"",year: "",name:""}],
     job:"",
@@ -25,6 +26,27 @@ export class FormService {
     languages:[{language:""}]
     }
 
+    Updatedata={
+      ID:localStorage.getItem("UserId"),
+      name:"",
+      email:"",
+      phonenumber:"",
+      dob:"",
+      gender:"",
+      address:"",
+      about:"",
+      photo:"",
+      education:[{degree:"",specialisation:"",year: "",name:""}],
+      job:"",
+      jobname:"",
+      jobyear:"",
+      jobdes:"",
+      skills:[{skill:""}],
+      achievements:"",
+      languages:[{language:""}]
+      }
+  
+
   constructor(private http:HttpClient) { }
 
   form1(form:any){
@@ -34,5 +56,14 @@ export class FormService {
   image(image:any){
     return this.http.post("http://localhost:3000/image/"+this.ID2,image)
     .subscribe(data=>{console.log(data)})
+  }
+  usercvdata(id:any){
+    return this.http.get("http://localhost:3000/usercvdata/"+id);
+  }
+  updatedata(form:any)
+  {
+    console.log('client update')
+    return this.http.put("http://localhost:3000/updateform",form)
+    .subscribe(data =>{console.log(data)})
   }
 }

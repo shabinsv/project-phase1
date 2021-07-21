@@ -21,11 +21,11 @@ export class Form5Component implements OnInit {
    const fd= new FormData;
    fd.append('image',this.selectedimage,this.selectedimage.name);
    this.http.image(fd);
+   console.log("Photo Uploaded")
+   
    }
 
   resumedata5(){
-  
-    console.log("photo added")
     this.router.navigate(['user']);
   }
   
