@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { Template1Component } from './template1/template1.component';
+import { Template2Component } from './template2/template2.component';
+import { Template3Component } from './template3/template3.component';
 import { Updateform1Component } from './updateform1/updateform1.component';
 import { Updateform2Component } from './updateform2/updateform2.component';
 import { Updateform3Component } from './updateform3/updateform3.component';
@@ -33,8 +35,13 @@ children:[{path:'form1',component:Form1Component},
 {path:'updateform1',component:Updateform1Component},
 {path:'updateform2',component:Updateform2Component},
 {path:'updateform3',component:Updateform3Component},
-{path:'updateform4',component:Updateform4Component}]},
-{path:'admin',component:AdminComponent}
+{path:'updateform4',component:Updateform4Component},
+{path:'template2',component:Template2Component},
+{path:'template3',component:Template3Component}]},
+{path:'admin',component:AdminComponent},
+{path:'template1',component:Template1Component},
+{path:'template2',component:Template2Component},
+{path:'template3',component:Template3Component}
 ];
 
 @NgModule({

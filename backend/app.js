@@ -7,6 +7,7 @@ var jwt = require('jsonwebtoken');
 var bodyparser=require('body-parser');
 const app= new express();
 var multer= require('multer');
+var nodemailer = require('nodemailer');
 var xxa="";
 var storage = multer.diskStorage({
       destination: function (req, file, cb) {
@@ -51,6 +52,30 @@ app.post("/signup",function(req,res){
   }
 var data=Userdata(data);
 data.save();
+sendmail();
+function sendmail(){
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+           user: 'mailfromResumeBuilder@gmail.com',
+           pass: 'xeknaduiwqpnudgm'
+       }
+   });
+
+   const mailOptions = {
+    from: 'mailfromResumeBuilder@gmail.com', 
+    to: userData.email, 
+    subject: 'sending mail', 
+    text: `Thanks For Using ResumeBuilder your Password is ${userData.password} `
+  };
+
+  transporter.sendMail(mailOptions, function (err, info) {
+    if(err)
+      console.log(err)
+    else
+      console.log(info);
+ });
+}
 });
 
 app.post("/login",function(req,res){
@@ -86,6 +111,24 @@ app.post("/login",function(req,res){
             
           }   
 })
+app.get("/check/:id",function(req,res){
+  var id = req.params.id;
+  Resumedata.findOne({ID:id})
+  .then(function(data){
+    if(data.ID==id){
+      
+      res.send(true);
+    }
+    else{
+      
+      res.send(false)
+    }
+  }).catch(function(){
+   
+    res.send(false)
+  })
+})
+
 app.post("/image/:id",upload.single('image'),function(req,res){
   id = req.params.id;
   Resumedata.updateOne({"ID":id},
@@ -111,9 +154,6 @@ app.post("/form1",function(req,res){
     photo:req.body.photo,
     education:req.body.education,
     job:req.body.job,
-    jobname:req.body.jobname,
-    jobyear:req.body.jobyear,
-    jobdes:req.body.jobdes,
     skills:req.body.skills,
     achievements:req.body.achievements,
     languages:req.body.languages
@@ -144,9 +184,6 @@ app.put('/updateform',(req,res)=>{
     photo=req.body.photo,
     education=req.body.education,
     job=req.body.job,
-    jobname=req.body.jobname,
-    jobyear=req.body.jobyear,
-    jobdes=req.body.jobdes,
     skills=req.body.skills,
     achievements=req.body.achievements,
     languages=req.body.languages
@@ -161,9 +198,6 @@ app.put('/updateform',(req,res)=>{
                                 "photo":photo,
                                 "education":education,
                                 "job":job,
-                                "jobname":jobname,
-                                "jobyear":jobyear,
-                                "jobdes":jobdes,
                                 "skills":skills,
                                 "achievements":achievements,
                                 "languages":languages
@@ -173,18 +207,21 @@ app.put('/updateform',(req,res)=>{
  });
 });
 
+app.delete("/deletedata/:id",(req,res)=>{
+   
+  id = req.params.id;
+  Resumedata.findOneAndDelete({"ID":id})
+  .then(()=>{
+      console.log('success')
+      res.send({data:"Deleted ResumeData From Server"});
+  });
+});
 
 
 
 
 
-
-
-
-
-
-
-    app.get("/authors",function(req,res){
+app.get("/authors",function(req,res){
       Authordata.find()
       .then(function(authors){
         res.send(authors);

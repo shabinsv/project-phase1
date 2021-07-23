@@ -18,5 +18,4 @@ constructor(public http:FormService,private router:Router) { }
   insert(){
     this.http.Resumedata.education.push({degree:"",specialisation:"",year: "",name:""});
   }
-
 }

@@ -17,10 +17,7 @@ export class FormService {
     about:"",
     photo:"",
     education:[{degree:"",specialisation:"",year: "",name:""}],
-    job:"",
-    jobname:"",
-    jobyear:"",
-    jobdes:"",
+    job:[{jobname:"", companyname:"", jobyear:"",jobdes:""}],
     skills:[{skill:""}],
     achievements:"",
     languages:[{language:""}]
@@ -37,10 +34,7 @@ export class FormService {
       about:"",
       photo:"",
       education:[{degree:"",specialisation:"",year: "",name:""}],
-      job:"",
-      jobname:"",
-      jobyear:"",
-      jobdes:"",
+      job:[{jobname:"", companyname:"", jobyear:"",jobdes:""}],
       skills:[{skill:""}],
       achievements:"",
       languages:[{language:""}]
@@ -66,4 +60,20 @@ export class FormService {
     return this.http.put("http://localhost:3000/updateform",form)
     .subscribe(data =>{console.log(data)})
   }
+  check(data:any){
+      this.http.get("http://localhost:3000/check/"+data).subscribe(res=>{
+      if(res){
+        var x="checked";
+        localStorage.setItem('check',x);
+      }
+      else{
+        localStorage.removeItem('check');
+      }
+     })
+
+  }
+  deletedata(id:any){
+    return this.http.delete("http://localhost:3000/deletedata/"+id);
+  }
+  
 }

@@ -31,6 +31,10 @@ import { Updateform2Component } from './updateform2/updateform2.component';
 import { Updateform3Component } from './updateform3/updateform3.component';
 import { Updateform4Component } from './updateform4/updateform4.component';
 import { AdminComponent } from './admin/admin.component';
+import { Template2Component } from './template2/template2.component';
+import { Template3Component } from './template3/template3.component';
+import { FormService } from './form.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +55,9 @@ import { AdminComponent } from './admin/admin.component';
     Updateform2Component,
     Updateform3Component,
     Updateform4Component,
-    AdminComponent
+    AdminComponent,
+    Template2Component,
+    Template3Component
   ],
   imports: [
     BrowserModule,
@@ -65,7 +71,7 @@ import { AdminComponent } from './admin/admin.component';
     MatIconModule,
     MatDividerModule
   ],
-  providers: [UserService,TemplateService],
+  providers: [UserService,TemplateService,FormService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

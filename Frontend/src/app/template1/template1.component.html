@@ -50,7 +50,7 @@
 <dd>
  
 <section class="summary">
-Profile summary 
+    {{Resumedata.about}}
 </section>
  
 </dd>
@@ -93,14 +93,16 @@ Profile summary
 <section id="experience">
  
 <!-- Position #1 -->
+<div *ngFor="let i of Resumedata.job">
  
-<h2 class="top">{{Resumedata.job}}</h2>
-<p class="bus1">{{Resumedata.jobname}}</p>
-<p class="time">{{Resumedata.jobyear}}</p>
+<h2 class="top">{{i.jobname}}</h2>
+<p class="bus1">{{i.companyname}}</p>
+<p class="time">{{i.jobyear}}</p>
  
 <p>
-    {{Resumedata.jobdes}}
+    {{i.jobdes}}
 </p>
+</div>
  
  
 </section>

@@ -16,5 +16,8 @@ export class Form3Component implements OnInit {
     this.router.navigate(['user/form4']);
    
   }
+  insert(){
+    this.http.Resumedata.job.push({jobname:"", companyname:"", jobyear:"",jobdes:""});
+  }
 
 }

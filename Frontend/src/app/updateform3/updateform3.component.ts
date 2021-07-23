@@ -17,5 +17,8 @@ export class Updateform3Component implements OnInit {
     this.router.navigate(['user/updateform4']);
    
   }
+  insert(){
+    this.http.Updatedata.job.push({jobname:"", companyname:"", jobyear:"",jobdes:""});
+  }
 
 }

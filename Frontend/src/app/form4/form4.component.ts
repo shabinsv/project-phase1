@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormService } from '../form.service';
 import { Form5Component } from '../form5/form5.component';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-form4',
@@ -9,16 +10,18 @@ import { Form5Component } from '../form5/form5.component';
   styleUrls: ['./form4.component.css']
 })
 export class Form4Component implements OnInit {
+  ID2=localStorage.getItem("UserId");
 
-  constructor(public http:FormService,private router:Router) { }
+  constructor(public http:FormService,private router:Router,private form:UserService) { }
 
   ngOnInit(): void {
   }
   
   resumedata4(){
     this.http.form1(this.http.Resumedata);
-    console.log("called");
     alert("Sucessfully Created");
+    this.http.check(this.ID2);
+    this.form.LoggedIn();
     this.router.navigate(['user/form5']);
   
    

@@ -1,6 +1,13 @@
 a{
     margin-left: 5px;
     color: white;
+    padding-right: 3%;
+    
+    text-decoration: none;
+}
+a:hover{
+    color: black;
+               
 }
 .nav1{
     background: orangered;

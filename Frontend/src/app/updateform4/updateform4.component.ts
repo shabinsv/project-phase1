@@ -16,9 +16,8 @@ export class Updateform4Component implements OnInit {
 
   updatedata4(){
     this.http.updatedata(this.http.Updatedata);
-    console.log("called");
     alert("Sucessfully Updated");
-    this.router.navigate(['user/form5']);
+    this.router.navigate(['user']);
   
    
   }

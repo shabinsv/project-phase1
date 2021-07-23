@@ -10,35 +10,38 @@
   
             <mat-divider></mat-divider>
           
-           <a routerLink="/user"> <button mat-button class="menu-button">
+          <button mat-button class="menu-button" type="button" (click)="home()">
                
                 <mat-icon>home</mat-icon>
                 <span>Home</span>
-            </button></a>
+            </button>
             
-            <a routerLink=""> <button mat-button class="menu-button">
-                <mat-icon>person</mat-icon>
-                <span>Profile</span>
-            </button></a>
-            <a routerLink="form1"> <button mat-button class="menu-button">
+            
+            <button mat-button class="menu-button" [disabled]="check.LoggedIn()" type="button" (click)="create()">
               <mat-icon>build</mat-icon>
               <span>Create Resume</span>
-          </button></a>
-          <a routerLink="updateform1"><button mat-button class="menu-button">
+          </button>
+          <button mat-button class="menu-button" [disabled]="!check.LoggedIn()" type="button" (click)="update()">
             <mat-icon>edit</mat-icon>
             <span>Update Resume</span>
-        </button></a>
-        <a routerLink=""> <button mat-button class="menu-button">
+        </button>
+         <button mat-button class="menu-button" [disabled]="!check.LoggedIn()" type="button" (click)="updatephoto()">
+            <mat-icon>person</mat-icon>
+            <span>Update Photo</span>
+        </button>
+
+     <button mat-button class="menu-button" [disabled]="!check.LoggedIn()" type="button" (click)="delete()">
           <mat-icon>delete</mat-icon>
           <span>Delete Resume</span>
-      </button></a>
+      </button>
             
     
     
-      <a routerLink=""> <button mat-button class="menu-button">
+ <button mat-button class="menu-button">
                 <mat-icon>help</mat-icon>
                 <span>Help</span>
-            </button></a>
+            </button>
+            
     
        
         </mat-sidenav>
